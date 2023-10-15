@@ -21,6 +21,7 @@ function receiveData(sock)
 		else
 			if err ~= socket.ERRORS.AGAIN then
 				console:error("Socket error " .. err)
+				sock:close()
 			else
 				local req = parseHttp(data)
 				if not req then
